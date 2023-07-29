@@ -2788,7 +2788,8 @@ CREATE TABLE public.user_con_profiles (
     needs_update boolean DEFAULT false NOT NULL,
     accepted_clickwrap_agreement boolean DEFAULT false NOT NULL,
     mobile_phone character varying,
-    allow_sms boolean DEFAULT true NOT NULL
+    allow_sms boolean DEFAULT true NOT NULL,
+    lottery_number integer NOT NULL
 );
 
 
@@ -4781,6 +4782,13 @@ CREATE INDEX index_user_activity_alerts_on_user_id ON public.user_activity_alert
 
 
 --
+-- Name: index_user_con_profiles_on_convention_id_and_lottery_number; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_user_con_profiles_on_convention_id_and_lottery_number ON public.user_con_profiles USING btree (convention_id, lottery_number);
+
+
+--
 -- Name: index_user_con_profiles_on_convention_id_and_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -5921,18 +5929,13 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220502182655'),
 ('20220503164309'),
 ('20220609161816'),
-('20220807163855'),
-('20220807165227'),
-('20220807170349'),
-('20220807170912'),
-('20220807172511'),
 ('20220918173739'),
 ('20220924204825'),
 ('20221120175702'),
 ('20230109012113'),
-('20230112164622'),
 ('20230113184026'),
 ('20230113220828'),
-('20230627000846');
+('20230627000846'),
+('20230729164027');
 
 
