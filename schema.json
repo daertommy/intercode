@@ -4888,6 +4888,30 @@
               "deprecationReason": null
             },
             {
+              "name": "my_signup_requests",
+              "description": "Returns all signup requests for the current user within this convention. If no user is signed in,\nreturns an empty array.\n",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "OBJECT",
+                      "name": "SignupRequest",
+                      "ofType": null
+                    }
+                  }
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "my_signups",
               "description": "Returns all signups for the current user within this convention. If no user is signed in,\nreturns an empty array.\n",
               "args": [],
@@ -29153,6 +29177,18 @@
                   "name": "ID",
                   "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "priority",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null

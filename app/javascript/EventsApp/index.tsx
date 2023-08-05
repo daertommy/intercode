@@ -14,13 +14,14 @@ import FourOhFourPage from '../FourOhFourPage';
 import NewTeamMember from './TeamMemberAdmin/NewTeamMember';
 import EditTeamMember from './TeamMemberAdmin/EditTeamMember';
 import TeamMembersIndex from './TeamMemberAdmin/TeamMembersIndex';
-import { SiteMode, TicketMode } from '../graphqlTypes.generated';
+import { SignupMode, SiteMode, TicketMode } from '../graphqlTypes.generated';
 import EventTicketTypesWrapper from './EventTicketTypesWrapper';
 
 const LazyTicketTypeAdmin = React.lazy(() => import('../TicketTypeAdmin'));
+const LazyMySignupQueue = React.lazy(() => import('./MySignupQueue'));
 
 function EventsApp(): JSX.Element {
-  const { siteMode, ticketMode } = useContext(AppRootContext);
+  const { siteMode, signupMode, ticketMode } = useContext(AppRootContext);
 
   return (
     <Routes>
@@ -31,6 +32,7 @@ function EventsApp(): JSX.Element {
       {siteMode !== SiteMode.SingleEvent && (
         <Route path="schedule_with_counts/*" element={<Navigate to="../schedule" replace />} />
       )}
+      {signupMode === SignupMode.RankedChoice && <Route path="my-signup-queue" element={<LazyMySignupQueue />} />}
       <Route path=":eventId">
         <Route
           path="edit"
